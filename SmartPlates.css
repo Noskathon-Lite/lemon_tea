@@ -1,4 +1,4 @@
-/* Basic styles for layout */
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -31,7 +31,6 @@ button:hover {
   background-color: #00796b;
 }
 
-/* Modal Background */
 .modal {
   display: none;
   position: fixed;
@@ -45,7 +44,6 @@ button:hover {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-/* Modal Content */
 .modal-content {
   background-color: #fff;
   margin: 5% auto;
@@ -55,7 +53,6 @@ button:hover {
   max-width: 400px;
 }
 
-/* Close Button */
 .close {
   color: #aaa;
   float: right;
@@ -70,7 +67,6 @@ button:hover {
   cursor: pointer;
 }
 
-/* Authentication Forms */
 .modal-content form {
   display: flex;
   flex-direction: column;
@@ -102,7 +98,6 @@ button:hover {
   padding: 20px;
 }
 
-/* Main Application - Meal Log & Dashboard */
 #appSection {
   display: block;
 }
@@ -149,7 +144,6 @@ th {
   color: #333;
 }
 
-/* Camera Section */
 #cameraSection {
   display: none;
   text-align: center;
@@ -169,7 +163,6 @@ canvas {
   margin-top: 10px;
 }
 
-/* Navigation Bar */
 #navbar {
   background-color: #00796b;
   padding: 10px;
