@@ -1,38 +1,32 @@
 let mealLog = [];
-let isLoggedIn = false; // Track login status
-let username = ''; // Store username
-let userAllergies = []; // Store user allergies
+let isLoggedIn = false; 
+let username = ''; 
+let userAllergies = []; 
 
-// Open Login Modal
 document.getElementById('openLoginBtn').addEventListener('click', function() {
     document.getElementById('loginModal').style.display = 'block';
 });
 
-// Open Sign Up Modal
 document.getElementById('openSignUpBtn').addEventListener('click', function() {
     document.getElementById('signUpModal').style.display = 'block';
 });
 
-// Close Login Modal
 document.getElementById('closeLoginBtn').addEventListener('click', function() {
     document.getElementById('loginModal').style.display = 'none';
 });
 
-// Close Sign Up Modal
 document.getElementById('closeSignUpBtn').addEventListener('click', function() {
     document.getElementById('signUpModal').style.display = 'none';
 });
 
-// Handle login form submission
 document.getElementById('login').addEventListener('submit', function(event) {
     event.preventDefault();
-    username = document.getElementById('loginEmail').value.split('@')[0]; // Assume username is part of email before "@"
+    username = document.getElementById('loginEmail').value.split('@')[0]; 
     isLoggedIn = true;
     toggleAuthentication();
-    document.getElementById('loginModal').style.display = 'none'; // Close the login modal
+    document.getElementById('loginModal').style.display = 'none'; l
 });
 
-// Handle signup form submission
 document.getElementById('signup').addEventListener('submit', function(event) {
     event.preventDefault();
     const name = document.getElementById('signupName').value;
@@ -42,24 +36,22 @@ document.getElementById('signup').addEventListener('submit', function(event) {
     const confirmPassword = document.getElementById('confirmPassword').value;
     const allergies = document.getElementById('allergies').value;
 
-    // Split allergies string by commas and store them in an array
     userAllergies = allergies ? allergies.split(',').map(item => item.trim().toLowerCase()) : [];
 
-    // Check if passwords match
+
     if (password !== confirmPassword) {
         alert('Passwords do not match!');
         return;
     }
 
-    // For simplicity, we assume signup is successful
+   
     alert(`Welcome ${name}, you have signed up successfully!`);
-    username = usernameInput; // Set the username
+    username = usernameInput; 
     isLoggedIn = true;
     toggleAuthentication();
-    document.getElementById('signUpModal').style.display = 'none'; // Close the sign-up modal
+    document.getElementById('signUpModal').style.display = 'none';
 });
 
-// Toggle display of authentication forms and main app content
 function toggleAuthentication() {
     const authSection = document.querySelector('header');
     const appSection = document.getElementById('appSection');
@@ -70,15 +62,13 @@ function toggleAuthentication() {
         authSection.style.display = 'none';
         appSection.style.display = 'block';
         navbar.style.display = 'block';
-        usernameDisplay.innerText = username; // Display the username in navbar
+        usernameDisplay.innerText = username; 
     } else {
         authSection.style.display = 'block';
         appSection.style.display = 'none';
         navbar.style.display = 'none';
     }
 }
-
-// Placeholder for image upload and Clarifai API integration
 document.getElementById('uploadBtn').addEventListener('click', function() {
     if (!isLoggedIn) {
         alert('Please log in first to upload an image!');
@@ -95,20 +85,16 @@ document.getElementById('uploadBtn').addEventListener('click', function() {
     const reader = new FileReader();
 
     reader.onload = function(event) {
-        // Simulating image analysis and fetching nutritional data
-        const foodItem = 'Apple'; // Placeholder for food recognition
-        const calories = 95; // Placeholder data
+       
+        const foodItem = 'Apple'; 
+        const calories = 95; 
         const protein = 0.5;
         const carbs = 25;
         const fat = 0.3;
-
-        // Check if the food item is in the user's allergy list
         if (checkForAllergies(foodItem)) {
             alert(`Warning: The food item "${foodItem}" contains ingredients that you are allergic to! Do not eat it.`);
-            return; // Stop adding the meal log entry if it's an allergy match
+            return; 
         }
-
-        // Add the meal to the meal log
         mealLog.push({
             name: foodItem,
             calories: calories,
@@ -117,14 +103,12 @@ document.getElementById('uploadBtn').addEventListener('click', function() {
             fat: fat
         });
 
-        // Update the meal log and progress
         updateMealLog();
     };
 
     reader.readAsDataURL(file);
 });
 
-// Start camera access when the "Open Camera" button is clicked
 document.getElementById('openCameraBtn').addEventListener('click', function() {
     if (!isLoggedIn) {
         alert('Please log in first to use the camera!');
@@ -134,7 +118,6 @@ document.getElementById('openCameraBtn').addEventListener('click', function() {
     startCamera();
 });
 
-// Start the camera and stream video to the video element
 function startCamera() {
     const video = document.getElementById('video');
     const constraints = { video: { facingMode: 'environment' } };
@@ -148,7 +131,6 @@ function startCamera() {
         });
 }
 
-// Capture the photo from the camera
 document.getElementById('captureBtn').addEventListener('click', function() {
     if (!isLoggedIn) {
         alert('Please log in first to capture an image!');
@@ -165,38 +147,31 @@ document.getElementById('captureBtn').addEventListener('click', function() {
 
     context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-    // Convert canvas image to a data URL
     const dataUrl = canvas.toDataURL('image/png');
 
-    // Display the captured image
     capturedImage.src = dataUrl;
     capturedImage.style.display = 'block';
-    
-    // Optionally, process the image (e.g., send to the API)
-    processImage(dataUrl);
+        processImage(dataUrl);
 });
 
-// Process the captured image (e.g., send to an API for analysis)
 function processImage(imageDataUrl) {
     if (!isLoggedIn) {
         alert('Please log in first to process an image!');
         return;
     }
 
-    // Simulate image processing and analysis (e.g., Clarifai or another API)
-    const foodItem = 'Apple'; // Placeholder for food recognition
-    const calories = 95; // Placeholder data
+    
+    const foodItem = 'Apple'; 
+    const calories = 95; 
     const protein = 0.5;
     const carbs = 25;
     const fat = 0.3;
 
-    // Check if the food item is in the user's allergy list
     if (checkForAllergies(foodItem)) {
         alert(`Warning: The food item "${foodItem}" contains ingredients that you are allergic to! Do not eat it.`);
-        return; // Stop adding the meal log entry if it's an allergy match
+        return; 
     }
 
-    // Add the meal to the meal log
     mealLog.push({
         name: foodItem,
         calories: calories,
@@ -205,35 +180,29 @@ function processImage(imageDataUrl) {
         fat: fat
     });
 
-    // Update the meal log and progress
     updateMealLog();
 }
 
-// Function to check if the food item contains any of the user's allergies
 function checkForAllergies(foodItem) {
-    // Simulate a list of common allergens (this would normally come from an API or database)
     const commonAllergens = {
-        "apple": ["apple"], // Example: apple could have "apple" as an allergen
+        "apple": ["apple"],
         "peanut": ["peanut", "peanuts"],
         "milk": ["milk", "dairy"],
-        // Add more common allergens as needed
     };
 
-    // Check if the foodItem exists in the allergies dictionary
     const foodLower = foodItem.toLowerCase();
     for (const allergen in commonAllergens) {
         if (foodLower.includes(allergen) && userAllergies.includes(allergen)) {
-            return true; // The food contains an allergen
+            return true; 
         }
     }
 
-    return false; // No allergens detected in the food item
+    return false; 
 }
 
-// Function to update the meal log table
 function updateMealLog() {
     const tableBody = document.querySelector('#mealLogTable tbody');
-    tableBody.innerHTML = ''; // Clear existing rows
+    tableBody.innerHTML = ''; 
 
     mealLog.forEach(meal => {
         const row = document.createElement('tr');
@@ -250,7 +219,6 @@ function updateMealLog() {
     updateDashboard();
 }
 
-// Function to update the progress dashboard
 function updateDashboard() {
     const totalCalories = mealLog.reduce((total, meal) => total + meal.calories, 0);
     const totalProtein = mealLog.reduce((total, meal) => total + meal.protein, 0);
