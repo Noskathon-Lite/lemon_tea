@@ -3,11 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SmartPlates</title>
+    <title>SmartPlates: Healthy Eating Assistant</title>
     <link rel="stylesheet" href="SmartPlates.css">
 </head>
 <body>
-    
+    <header>
+        <h1>SmartPlates: Healthy Eating Assistant</h1>
+        <p>Make healthier food choices with the power of AI!</p>
+        <button id="openLoginBtn">Login</button>
+        <button id="openSignUpBtn">Sign Up</button>
+    </header>
+
+    <!-- Modal for Login -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeLoginBtn">&times;</span>
+            <h2>Login</h2>
+            <form id="login" method="POST">
+                <input type="email" id="loginEmail" placeholder="Email" required />
+                <input type="password" id="loginPassword" placeholder="Password" required />
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal for Sign Up -->
+    <div id="signUpModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeSignUpBtn">&times;</span>
+            <h2>Sign Up</h2>
+            <form id="signup" method="POST">
+                <input type="text" id="signupName" placeholder="Full Name" required />
+                <input type="text" id="signupUsername" placeholder="Username" required />
+                <input type="email" id="signupEmail" placeholder="Email" required />
+                <input type="password" id="signupPassword" placeholder="Password" required />
+                <input type="password" id="confirmPassword" placeholder="Confirm Password" required />
+                <input type="text" id="allergies" placeholder="Allergies (optional)" />
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav id="navbar" class="hidden">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#search">Search</a></li>
+            <li id="usernameDisplay"></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Main Application (Visible after login) -->
+        <section id="appSection" class="hidden">
+            <section class="image-upload">
+                <h2>Take a Photo of the Food</h2>
+                <button id="openCameraBtn">Open Camera</button>
+                <div id="cameraSection" class="hidden">
+                    <video id="video" width="320" height="240" autoplay></video>
+                    <button id="captureBtn">Capture</button>
+                    <canvas id="canvas" class="hidden"></canvas>
+                    <img id="capturedImage" class="hidden" alt="Captured Food" />
+                </div>
+                <button id="uploadBtn">Upload from File</button>
+                <input type="file" id="foodImage" accept="image/*" class="hidden" />
+            </section>
+
+            <section class="meal-log">
+                <h2>Your Meal Log</h2>
+                <table id="mealLogTable">
+                    <thead>
+                        <tr>
+                            <th>Food Item</th>
+                            <th>Calories</th>
+                            <th>Protein</th>
+                            <th>Carbs</th>
+                            <th>Fat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Meal logs will be added here -->
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="dashboard">
+                <h2>Progress Dashboard</h2>
+                <div id="dashboardContent">
+                    <!-- Progress metrics like total calories consumed will be shown here -->
+                </div>
+            </section>
+        </section>
+    </div>
+
+    <script src="SmartPlates.js"></script>
 </body>
-<script src="SmartPlates.js"></script>
 </html>
