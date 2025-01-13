@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Plate - Sign Up</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+    <div class="container">
+        <div class="auth-card">
+            <h1>Create Account</h1>
+            <form id="signupForm" class="auth-form">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required>
+                </div>
+                <div class="form-group">
+                    <label>Allergies</label>
+                    <div class="allergies-checkboxes">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="allergies" value="peanuts"> Peanuts
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="allergies" value="dairy"> Dairy
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="allergies" value="gluten"> Gluten
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="allergies" value="shellfish"> Shellfish
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="allergies" value="eggs"> Eggs
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="allergies" value="soy"> Soy
+                        </label>
+                    </div>
+                </div>
+                <button type="submit" class="primary-button">Sign Up</button>
+            </form>
+            <p class="auth-link">Already have an account? <a href="login.html">Login</a></p>
+        </div>
+    </div>
+    <script src="auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Plate - Food Scanner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Smart Plate</h1>
+            <p>Scan food to check allergens and calories</p>
+        </header>
+
+        <main>
+            <div class="scanner-section">
+                <div class="camera-container">
+                    <video id="camera" autoplay playsinline></video>
+                    <canvas id="canvas" style="display: none;"></canvas>
+                </div>
+                <button id="scanButton" class="primary-button">Scan Food</button>
+            </div>
+
+            <div class="results-section">
+                <div class="result-card">
+                    <h2>Food Analysis</h2>
+                    <div id="foodInfo" class="food-info">
+                        <p>No food scanned yet</p>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <h2>Allergens</h2>
+                    <ul id="allergensList" class="allergens-list">
+                    </ul>
+                </div>
+
+                <div class="result-card">
+                    <h2>Nutritional Info</h2>
+                    <div id="nutritionInfo" class="nutrition-info">
+                        <div class="calorie-display">
+                            <span id="calorieCount">0</span>
+                            <span class="unit">kcal</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
